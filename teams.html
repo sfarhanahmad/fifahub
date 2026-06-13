@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>World Cup 2026 Teams: Full Squads, Groups &amp; Best Finishes for All 48 Nations</title>
+<meta name="description" content="Every team at the 2026 FIFA World Cup — group, confederation, best-ever World Cup finish, and the player to watch for all 48 qualified nations.">
+<meta property="og:title" content="World Cup 2026 — All 48 Teams">
+<meta property="og:description" content="Browse and search every nation at the 2026 World Cup: groups, history, and players to watch.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://fifaclub.nx.kg/teams.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+<!-- Google AdSense — replace ca-pub-XXXXXXXXXXXXXXXX with your publisher ID -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "FIFA World Cup 2026 Teams",
+  "description": "All 48 national teams competing at the 2026 FIFA World Cup, grouped A through L."
+}
+</script>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="site">
+  <div class="wrap nav">
+    <div class="logo"><span class="ball"></span> <a href="index.html" style="text-decoration:none;color:inherit;">FIFA Hub 2026</a></div>
+    <nav class="nav-links">
+      <a href="index.html#today">Today</a>
+      <a href="index.html#groups">Groups</a>
+      <a href="teams.html">Teams</a>
+      <a href="index.html#schedule">Schedule</a>
+      <a href="predictions.html">Predict</a>
+      <a href="index.html#history">History</a>
+      <a href="index.html#faq">FAQ</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero" style="padding-top:48px;padding-bottom:48px;">
+  <div class="wrap">
+    <div class="eyebrow">All 48 Nations</div>
+    <h1>World Cup <span>2026</span><br>Team Guide</h1>
+    <p class="lead">Search or filter by group to find any team's confederation, all-time best World Cup finish, and the player everyone's watching this summer.</p>
+  </div>
+</section>
+
+<!-- ===== FILTER + GRID ===== -->
+<section class="wrap" style="padding-top:40px;">
+  <div class="team-filters">
+    <input type="text" id="team-search" placeholder="Search a team — e.g. Brazil, Morocco, Japan…">
+    <select id="group-filter">
+      <option value="">All Groups</option>
+      <option value="A">Group A</option>
+      <option value="B">Group B</option>
+      <option value="C">Group C</option>
+      <option value="D">Group D</option>
+      <option value="E">Group E</option>
+      <option value="F">Group F</option>
+      <option value="G">Group G</option>
+      <option value="H">Group H</option>
+      <option value="I">Group I</option>
+      <option value="J">Group J</option>
+      <option value="K">Group K</option>
+      <option value="L">Group L</option>
+    </select>
+  </div>
+  <div class="team-card-grid" id="team-grid"></div>
+  <div class="no-results" id="no-results" style="display:none;">No teams match your search.</div>
+</section>
+
+<div class="ad-slot">
+  <div class="ad-inner">
+    <ins class="adsbygoogle" style="display:block;width:100%;" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  </div>
+</div>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h4>Jump To</h4>
+        <ul>
+          <li><a href="index.html#today">Today's Matches</a></li>
+          <li><a href="index.html#groups">Group Standings</a></li>
+          <li><a href="teams.html">All 48 Teams</a></li>
+          <li><a href="predictions.html">Predictions &amp; Quiz</a></li>
+          <li><a href="index.html#history">Past Winners</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>About</h4>
+        <p>Independent fan reference for the 2026 FIFA World Cup. Not affiliated with FIFA.</p>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>FIFA World Cup &amp; Club World Cup Hub</span>
+      <span>Updated June 13, 2026</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+let TEAMS = [];
+
+function flagUrl(code){ return `https://flagcdn.com/h40/${code}.png`; }
+
+function render(){
+  const q = document.getElementById('team-search').value.trim().toLowerCase();
+  const g = document.getElementById('group-filter').value;
+  const grid = document.getElementById('team-grid');
+  const empty = document.getElementById('no-results');
+
+  const filtered = TEAMS.filter(t=>{
+    const matchesQ = !q || t.name.toLowerCase().includes(q) || t.key.toLowerCase().includes(q);
+    const matchesG = !g || t.group === g;
+    return matchesQ && matchesG;
+  });
+
+  grid.innerHTML = filtered.map(t=>`
+    <div class="team-card">
+      <div class="head">
+        <img src="${flagUrl(t.flag)}" alt="${t.name} flag" loading="lazy">
+        <h3>${t.name}</h3>
+        <span class="grp">Group ${t.group}</span>
+      </div>
+      <div class="row"><b>Confederation:</b> ${t.confed}</div>
+      <div class="row"><b>Best finish:</b> ${t.best}</div>
+      <div class="row"><b>Player to watch:</b> ${t.key}</div>
+      <p>${t.note}</p>
+    </div>
+  `).join('');
+
+  empty.style.display = filtered.length ? 'none' : 'block';
+}
+
+fetch('data/teams.json')
+  .then(r=>r.json())
+  .then(data=>{ TEAMS = data; render(); })
+  .catch(()=>{ document.getElementById('team-grid').innerHTML = '<div class="no-results">Could not load team data — make sure data/teams.json is deployed alongside this page.</div>'; });
+
+document.getElementById('team-search').addEventListener('input', render);
+document.getElementById('group-filter').addEventListener('change', render);
+</script>
+
+</body>
+</html>

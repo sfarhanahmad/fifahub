@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://fifaclub.nx.kg/sitemap.xml

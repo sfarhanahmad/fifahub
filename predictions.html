@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>World Cup 2026 Predictions &amp; Trivia Quiz — Pick Your Champion</title>
+<meta name="description" content="Pick your World Cup 2026 champion and test your football knowledge with our free World Cup trivia quiz covering history, records, and the 2026 tournament.">
+<meta property="og:title" content="World Cup 2026 — Predictions &amp; Trivia">
+<meta property="og:description" content="Pick your champion and take the World Cup trivia quiz — free, no sign-up.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://fifaclub.nx.kg/predictions.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+<!-- Google AdSense — replace ca-pub-XXXXXXXXXXXXXXXX with your publisher ID -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="site">
+  <div class="wrap nav">
+    <div class="logo"><span class="ball"></span> <a href="index.html" style="text-decoration:none;color:inherit;">FIFA Hub 2026</a></div>
+    <nav class="nav-links">
+      <a href="index.html#today">Today</a>
+      <a href="index.html#groups">Groups</a>
+      <a href="teams.html">Teams</a>
+      <a href="index.html#schedule">Schedule</a>
+      <a href="predictions.html">Predict</a>
+      <a href="index.html#history">History</a>
+      <a href="index.html#faq">FAQ</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero" style="padding-top:48px;padding-bottom:48px;">
+  <div class="wrap">
+    <div class="eyebrow">Pick &amp; Play</div>
+    <h1>Predictions <span>&amp; Trivia</span></h1>
+    <p class="lead">Pick the team you think will lift the trophy on July 19, then test your World Cup knowledge with a quick five-question quiz. Your pick is saved on this device — come back after the final to see if you called it.</p>
+  </div>
+</section>
+
+<!-- ===== CHAMPION PICKER ===== -->
+<section class="wrap">
+  <div class="section-head">
+    <div><div class="eyebrow">Your Call</div><h2>Pick Your Champion</h2></div>
+    <p>Tap a team below. You can change your pick any time before the final.</p>
+  </div>
+  <div class="pick-grid" id="pick-grid"></div>
+  <div class="pick-result" id="pick-result"></div>
+</section>
+
+<div class="ad-slot">
+  <div class="ad-inner">
+    <ins class="adsbygoogle" style="display:block;width:100%;" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  </div>
+</div>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+<!-- ===== TRIVIA QUIZ ===== -->
+<section class="wrap">
+  <div class="section-head">
+    <div><div class="eyebrow">5 Questions</div><h2>World Cup Trivia</h2></div>
+    <p>How well do you really know the World Cup? Answer all five to get your score.</p>
+  </div>
+  <div id="quiz-area"></div>
+</section>
+
+<div class="ad-slot">
+  <div class="ad-inner">
+    <ins class="adsbygoogle" style="display:block;width:100%;" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  </div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h4>Jump To</h4>
+        <ul>
+          <li><a href="index.html#today">Today's Matches</a></li>
+          <li><a href="index.html#groups">Group Standings</a></li>
+          <li><a href="teams.html">All 48 Teams</a></li>
+          <li><a href="index.html#history">Past Winners</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>About</h4>
+        <p>Independent fan reference for the 2026 FIFA World Cup. Not affiliated with FIFA. Predictions and quiz results are stored only in your browser.</p>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>FIFA World Cup &amp; Club World Cup Hub</span>
+      <span>Updated June 13, 2026</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ===== CHAMPION PICKER ===== */
+const CONTENDERS = [
+  {name:"Spain", flag:"es"}, {name:"Argentina", flag:"ar"}, {name:"France", flag:"fr"},
+  {name:"England", flag:"gb-eng"}, {name:"Brazil", flag:"br"}, {name:"Portugal", flag:"pt"},
+  {name:"Germany", flag:"de"}, {name:"Netherlands", flag:"nl"}
+];
+
+const pickGrid = document.getElementById('pick-grid');
+const pickResult = document.getElementById('pick-result');
+const STORAGE_KEY = 'wc2026_champion_pick';
+
+function renderPicker(){
+  const saved = localStorage.getItem(STORAGE_KEY);
+  pickGrid.innerHTML = CONTENDERS.map(c=>`
+    <div class="pick-card ${c.name===saved?'picked':''}" data-name="${c.name}">
+      <img src="https://flagcdn.com/h60/${c.flag}.png" alt="${c.name} flag" loading="lazy">
+      <div class="pname">${c.name}</div>
+    </div>
+  `).join('');
+
+  document.querySelectorAll('.pick-card').forEach(card=>{
+    card.addEventListener('click', ()=>{
+      localStorage.setItem(STORAGE_KEY, card.dataset.name);
+      renderPicker();
+      showResult(card.dataset.name);
+    });
+  });
+
+  if(saved) showResult(saved);
+}
+
+function showResult(name){
+  pickResult.textContent = `You're backing ${name} to win the 2026 FIFA World Cup. Check back after July 19 to see how it goes!`;
+  pickResult.classList.add('show');
+}
+renderPicker();
+
+/* ===== TRIVIA QUIZ ===== */
+const QUESTIONS = [
+  {
+    q: "How many teams are competing at the 2026 World Cup?",
+    options: ["32", "40", "48", "64"],
+    correct: 2,
+    explain: "48 teams — the first expansion since the format grew to 32 in 1998."
+  },
+  {
+    q: "Which three countries are co-hosting the 2026 World Cup?",
+    options: ["USA, Mexico & Brazil", "USA, Canada & Mexico", "Canada, Mexico & Argentina", "USA, Canada & Brazil"],
+    correct: 1,
+    explain: "The United States, Canada and Mexico are co-hosting — the first World Cup with three host nations."
+  },
+  {
+    q: "Who won the 2022 FIFA World Cup in Qatar?",
+    options: ["France", "Brazil", "Argentina", "Croatia"],
+    correct: 2,
+    explain: "Argentina beat France on penalties after a thrilling 3–3 draw, winning Messi his first World Cup."
+  },
+  {
+    q: "Which country has won the most World Cups (5 titles)?",
+    options: ["Germany", "Italy", "Brazil", "Argentina"],
+    correct: 2,
+    explain: "Brazil leads with five titles: 1958, 1962, 1970, 1994 and 2002."
+  },
+  {
+    q: "Who won the FIFA Club World Cup 2025?",
+    options: ["Real Madrid", "Manchester City", "Chelsea", "Paris Saint-Germain"],
+    correct: 2,
+    explain: "Chelsea beat PSG 3–0 in the final of the newly expanded 32-club tournament."
+  }
+];
+
+let current = 0, score = 0;
+const quizArea = document.getElementById('quiz-area');
+
+function renderQuiz(){
+  if(current >= QUESTIONS.length){
+    quizArea.innerHTML = `
+      <div class="quiz-card quiz-score">
+        <div class="big">${score}/${QUESTIONS.length}</div>
+        <div class="sub">${score===QUESTIONS.length ? "Perfect score — true football mind." : score>=3 ? "Solid! You know your World Cup history." : "Not bad — brush up and try again."}</div>
+        <div class="quiz-share">
+          <button class="btn primary" id="quiz-retry" style="background:var(--turf);color:var(--chalk);border-color:var(--turf);">Try Again</button>
+        </div>
+      </div>`;
+    document.getElementById('quiz-retry').addEventListener('click', ()=>{ current=0; score=0; renderQuiz(); });
+    return;
+  }
+
+  const item = QUESTIONS[current];
+  quizArea.innerHTML = `
+    <div class="quiz-card">
+      <div class="quiz-progress">Question ${current+1} of ${QUESTIONS.length}</div>
+      <div class="quiz-q">${item.q}</div>
+      <div class="quiz-options">
+        ${item.options.map((o,i)=>`<button class="quiz-opt" data-i="${i}">${o}</button>`).join('')}
+      </div>
+    </div>`;
+
+  document.querySelectorAll('.quiz-opt').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const i = Number(btn.dataset.i);
+      document.querySelectorAll('.quiz-opt').forEach(b=>b.disabled = true);
+      if(i === item.correct){
+        btn.classList.add('correct');
+        score++;
+      } else {
+        btn.classList.add('wrong');
+        document.querySelector(`.quiz-opt[data-i="${item.correct}"]`).classList.add('correct');
+      }
+      const note = document.createElement('div');
+      note.style.fontFamily = 'var(--mono)';
+      note.style.fontSize = '12px';
+      note.style.color = 'var(--ink-soft)';
+      note.style.marginTop = '14px';
+      note.textContent = item.explain;
+      document.querySelector('.quiz-card').appendChild(note);
+
+      const next = document.createElement('button');
+      next.className = 'btn primary';
+      next.style.marginTop = '16px';
+      next.style.background = 'var(--turf)';
+      next.style.color = 'var(--chalk)';
+      next.style.borderColor = 'var(--turf)';
+      next.textContent = current === QUESTIONS.length-1 ? 'See Score' : 'Next Question';
+      next.addEventListener('click', ()=>{ current++; renderQuiz(); });
+      document.querySelector('.quiz-card').appendChild(next);
+    });
+  });
+}
+renderQuiz();
+</script>
+
+</body>
+</html>
