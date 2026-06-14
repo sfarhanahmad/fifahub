@@ -1,0 +1,61 @@
+[
+  {"name":"Mexico","flag":"mx","group":"A","confed":"CONCACAF","best":"Quarter-finals (1970, 1986)","key":"Santiago Giménez","note":"Co-hosts — opened the tournament at Estadio Azteca with a win over South Africa."},
+  {"name":"South Korea","flag":"kr","group":"A","confed":"AFC","best":"4th place (2002)","key":"Son Heung-min","note":"Opened with a 2–1 comeback win over Czechia."},
+  {"name":"Czechia","flag":"cz","group":"A","confed":"UEFA","best":"Runners-up, as Czechoslovakia (1934, 1962)","key":"Patrik Schick","note":"Lost their opener 2–1 to South Korea."},
+  {"name":"South Africa","flag":"za","group":"A","confed":"CAF","best":"Group stage (best result, hosted 2010)","key":"Percy Tau","note":"Lost the tournament opener 2–0 to Mexico."},
+
+  {"name":"Canada","flag":"ca","group":"B","confed":"CONCACAF","best":"Group stage (1986, 2022)","key":"Alphonso Davies","note":"Co-hosts — earned their first-ever World Cup point with a 1–1 draw vs Bosnia."},
+  {"name":"Bosnia & Herzegovina","flag":"ba","group":"B","confed":"UEFA","best":"Group stage (2014, only appearance)","key":"Edin Dzeko","note":"Drew 1–1 with Canada in their first match back since 2014."},
+  {"name":"Switzerland","flag":"ch","group":"B","confed":"UEFA","best":"Quarter-finals (1934, 1938, 1954)","key":"Granit Xhaka","note":"Faces Qatar to open their campaign."},
+  {"name":"Qatar","flag":"qa","group":"B","confed":"AFC","best":"Group stage (2022, as hosts)","key":"Akram Afif","note":"First World Cup appearance as a non-host nation."},
+
+  {"name":"Brazil","flag":"br","group":"C","confed":"CONMEBOL","best":"Champions (1958, 1962, 1970, 1994, 2002)","key":"Vinícius Júnior","note":"Chase a record-extending 6th title, opening against Morocco."},
+  {"name":"Scotland","flag":"gb-sct","group":"C","confed":"UEFA","best":"Group stage (never advanced)","key":"Scott McTominay","note":"First World Cup since 1998 — face Haiti in their opener."},
+  {"name":"Morocco","flag":"ma","group":"C","confed":"CAF","best":"4th place (2022)","key":"Achraf Hakimi","note":"The 2022 semi-finalists open against Brazil at MetLife Stadium."},
+  {"name":"Haiti","flag":"ht","group":"C","confed":"CONCACAF","best":"Group stage (1974, only previous appearance)","key":"Duckens Nazon","note":"Return to the World Cup for the first time in over 50 years."},
+
+  {"name":"USA","flag":"us","group":"D","confed":"CONCACAF","best":"3rd place (1930)","key":"Folarin Balogun","note":"Co-hosts — opened with a 4–1 win over Paraguay."},
+  {"name":"Australia","flag":"au","group":"D","confed":"AFC","best":"Round of 16 (2006)","key":"Mathew Ryan","note":"Face Türkiye in their opening match."},
+  {"name":"Türkiye","flag":"tr","group":"D","confed":"UEFA","best":"3rd place (2002)","key":"Arda Güler","note":"Face Australia in their opening match."},
+  {"name":"Paraguay","flag":"py","group":"D","confed":"CONMEBOL","best":"Quarter-finals (2010)","key":"Miguel Almirón","note":"Lost their opener 4–1 to hosts USA."},
+
+  {"name":"Germany","flag":"de","group":"E","confed":"UEFA","best":"Champions (1954, 1974, 1990, 2014)","key":"Jamal Musiala","note":"Four-time champions enter as one of the heavyweight contenders."},
+  {"name":"Ecuador","flag":"ec","group":"E","confed":"CONMEBOL","best":"Round of 16 (2006)","key":"Moisés Caicedo","note":"A tough physical test for Germany in Group E."},
+  {"name":"Côte d'Ivoire","flag":"ci","group":"E","confed":"CAF","best":"Group stage (never advanced)","key":"Sébastien Haller","note":"Reigning AFCON champions making their fourth World Cup appearance."},
+  {"name":"Curaçao","flag":"cw","group":"E","confed":"CONCACAF","best":"World Cup debut","key":"Tahith Chong","note":"The smallest nation ever to qualify (population under 150,000)."},
+
+  {"name":"Netherlands","flag":"nl","group":"F","confed":"UEFA","best":"Runners-up (1974, 1978, 2010)","key":"Cody Gakpo","note":"Perennial near-misses, looking for a first-ever title."},
+  {"name":"Japan","flag":"jp","group":"F","confed":"AFC","best":"Round of 16 (2002, 2010, 2018, 2022)","key":"Takefusa Kubo","note":"Have reached the Round of 16 in three of the last four tournaments."},
+  {"name":"Sweden","flag":"se","group":"F","confed":"UEFA","best":"Runners-up (1958)","key":"Alexander Isak","note":"Back at the World Cup for the first time since 2018."},
+  {"name":"Tunisia","flag":"tn","group":"F","confed":"CAF","best":"Group stage (never advanced)","key":"Hannibal Mejbri","note":"Looking to escape the group stage for the first time."},
+
+  {"name":"Belgium","flag":"be","group":"G","confed":"UEFA","best":"3rd place (2018)","key":"Jeremy Doku","note":"A new generation looks to build on the 'golden generation' era."},
+  {"name":"Iran","flag":"ir","group":"G","confed":"AFC","best":"Group stage (never advanced)","key":"Mehdi Taremi","note":"Face Belgium, Egypt and New Zealand in Group G."},
+  {"name":"Egypt","flag":"eg","group":"G","confed":"CAF","best":"Group stage (never advanced)","key":"Mohamed Salah","note":"Back at the World Cup for the first time since 1990."},
+  {"name":"New Zealand","flag":"nz","group":"G","confed":"OFC","best":"Group stage (never advanced)","key":"Chris Wood","note":"Qualified via the inter-confederation playoff."},
+
+  {"name":"Spain","flag":"es","group":"H","confed":"UEFA","best":"Champions (2010)","key":"Lamine Yamal","note":"FIFA's top-ranked side enter as a leading favorite."},
+  {"name":"Uruguay","flag":"uy","group":"H","confed":"CONMEBOL","best":"Champions (1930, 1950)","key":"Darwin Núñez","note":"Two-time champions in a tricky group with Spain."},
+  {"name":"Saudi Arabia","flag":"sa","group":"H","confed":"AFC","best":"Round of 16 (1994)","key":"Salem Al-Dawsari","note":"Co-hosts of 2034 — building momentum ahead of their home tournament."},
+  {"name":"Cape Verde","flag":"cv","group":"H","confed":"CAF","best":"World Cup debut","key":"Ryan Mendes","note":"The smallest African nation ever to qualify."},
+
+  {"name":"France","flag":"fr","group":"I","confed":"UEFA","best":"Champions (1998, 2018)","key":"Kylian Mbappé","note":"Reigning runners-up, headlined by the Golden Boot favorite."},
+  {"name":"Norway","flag":"no","group":"I","confed":"UEFA","best":"Round of 16 (1998)","key":"Erling Haaland","note":"First World Cup since 1998, built around their captain."},
+  {"name":"Senegal","flag":"sn","group":"I","confed":"CAF","best":"Quarter-finals (2002)","key":"Sadio Mané","note":"2002 quarter-finalists return for another deep run."},
+  {"name":"Iraq","flag":"iq","group":"I","confed":"AFC","best":"Group stage (1986)","key":"Aymen Hussein","note":"First World Cup appearance since 1986."},
+
+  {"name":"Argentina","flag":"ar","group":"J","confed":"CONMEBOL","best":"Champions (1978, 1986, 2022)","key":"Lionel Messi","note":"Defending champions begin their title defence against Algeria."},
+  {"name":"Austria","flag":"at","group":"J","confed":"UEFA","best":"3rd place (1954)","key":"David Alaba","note":"A dangerous, well-organized side in Group J."},
+  {"name":"Algeria","flag":"dz","group":"J","confed":"CAF","best":"Group stage (never advanced)","key":"Riyad Mahrez","note":"Face defending champions Argentina in their opener."},
+  {"name":"Jordan","flag":"jo","group":"J","confed":"AFC","best":"World Cup debut","key":"Yazan Al-Naimat","note":"First-ever World Cup appearance."},
+
+  {"name":"Portugal","flag":"pt","group":"K","confed":"UEFA","best":"3rd place (1966, 2006)","key":"Cristiano Ronaldo","note":"Ronaldo's record sixth World Cup, leading a deep squad."},
+  {"name":"Colombia","flag":"co","group":"K","confed":"CONMEBOL","best":"Quarter-finals (2014)","key":"Luis Díaz","note":"Looking to build on their 2014 quarter-final run."},
+  {"name":"Uzbekistan","flag":"uz","group":"K","confed":"AFC","best":"World Cup debut","key":"Eldor Shomurodov","note":"First-ever World Cup appearance."},
+  {"name":"DR Congo","flag":"cd","group":"K","confed":"CAF","best":"Group stage, as Zaire (1974)","key":"Yoane Wissa","note":"First World Cup appearance since 1974 (as Zaire)."},
+
+  {"name":"England","flag":"gb-eng","group":"L","confed":"UEFA","best":"Champions (1966)","key":"Jude Bellingham","note":"Open against Croatia — a rematch of the 2018 semi-final."},
+  {"name":"Croatia","flag":"hr","group":"L","confed":"UEFA","best":"Runners-up (2018)","key":"Luka Modric","note":"Three-time podium finishers in the last three tournaments."},
+  {"name":"Ghana","flag":"gh","group":"L","confed":"CAF","best":"Quarter-finals (2010)","key":"Mohammed Kudus","note":"The 2010 quarter-finalists return to the tournament."},
+  {"name":"Panama","flag":"pa","group":"L","confed":"CONCACAF","best":"Group stage (2018)","key":"Adalberto Carrasquilla","note":"Looking to reach the knockout stage for the first time."}
+]
