@@ -39,11 +39,52 @@ export default async function handler(req, res) {
       status: m.status, // SCHEDULED | LIVE | IN_PLAY | PAUSED | FINISHED
       utcDate: m.utcDate,
       home: m.homeTeam?.name,
+      homeCode: m.homeTeam?.tla,
       away: m.awayTeam?.name,
+      awayCode: m.awayTeam?.tla,
       homeScore: m.score?.fullTime?.home,
       awayScore: m.score?.fullTime?.away,
       venue: m.venue,
     }));
+
+    // Compute simple group standings from FINISHED matches.
+    // Group key as returned by football-data, e.g. "GROUP_A".
+    const standings = {};
+    for (const m of matches) {
+      if (m.status !== "FINISHED" || !m.group) continue;
+      if (m.homeScore === null || m.awayScore === null) continue;
+
+      const g = m.group;
+      standings[g] = standings[g] || {};
+      const ensure = (team) => {
+        if (!standings[g][team]) {
+          standings[g][team] = { team, P: 0, W: 0, D: 0, L: 0, GF: 0, GA: 0, GD: 0, Pts: 0 };
+        }
+        return standings[g][team];
+      };
+
+      const home = ensure(m.home);
+      const away = ensure(m.away);
+
+      home.P++; away.P++;
+      home.GF += m.homeScore; home.GA += m.awayScore;
+      away.GF += m.awayScore; away.GA += m.homeScore;
+
+      if (m.homeScore > m.awayScore) { home.W++; home.Pts += 3; away.L++; }
+      else if (m.homeScore < m.awayScore) { away.W++; away.Pts += 3; home.L++; }
+      else { home.D++; away.D++; home.Pts += 1; away.Pts += 1; }
+
+      home.GD = home.GF - home.GA;
+      away.GD = away.GF - away.GA;
+    }
+
+    // Sort each group by Pts then GD then GF
+    const standingsByGroup = {};
+    for (const [g, teams] of Object.entries(standings)) {
+      standingsByGroup[g] = Object.values(teams).sort(
+        (a, b) => b.Pts - a.Pts || b.GD - a.GD || b.GF - a.GF
+      );
+    }
 
     // Cache at Vercel's edge for 10 minutes, serve stale for up to 1 hour
     // while revalidating in the background — this is what gives you
@@ -52,7 +93,7 @@ export default async function handler(req, res) {
       "Cache-Control",
       "s-maxage=600, stale-while-revalidate=3600"
     );
-    return res.status(200).json({ updated: new Date().toISOString(), matches });
+    return res.status(200).json({ updated: new Date().toISOString(), matches, standings: standingsByGroup });
   } catch (err) {
     return res.status(500).json({ error: "Fetch failed", detail: String(err) });
   }

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>World Cup 2026 Live Scores &amp; Standings — Updated Automatically</title>
+<meta name="description" content="Live and today's FIFA World Cup 2026 match scores, plus auto-updating group standings for all 12 groups — refreshes automatically as results come in.">
+<meta property="og:title" content="World Cup 2026 — Live Scores &amp; Standings">
+<meta property="og:description" content="Real-time World Cup 2026 scores and group standings, refreshed automatically.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://fifahub-livid.vercel.app/live.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9810166137055589" crossorigin="anonymous"></script>
+
+<style>
+.live-status{
+  display:flex; align-items:center; gap:10px; font-family:var(--mono); font-size:12px;
+  letter-spacing:.1em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:24px;
+}
+.live-status .pulse{
+  width:8px; height:8px; border-radius:50%; background:var(--live);
+  animation:pulse 1.4s infinite;
+}
+.live-status button{
+  font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:.08em;
+  border:1px solid var(--ink); background:var(--paper); border-radius:99px; padding:6px 14px;
+  cursor:pointer; margin-left:auto;
+}
+.live-status button:hover{border-color:var(--turf); color:var(--turf);}
+.live-group-block{margin-bottom:36px;}
+.live-group-title{font-size:20px; font-weight:700; margin-bottom:12px;}
+.standings-mini{width:100%; border-collapse:collapse; font-family:var(--mono); font-size:12.5px; margin-bottom:18px; background:var(--paper);}
+.standings-mini th, .standings-mini td{padding:8px 6px; text-align:center; border-bottom:1px solid var(--line);}
+.standings-mini th{font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft); border-bottom:2px solid var(--ink);}
+.standings-mini td.team{text-align:left; font-weight:600; font-family:var(--body);}
+.empty-state{
+  font-family:var(--mono); font-size:13px; color:var(--ink-soft); text-align:center;
+  padding:48px 20px; border:1px dashed var(--line); border-radius:6px;
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="site">
+  <div class="wrap nav">
+    <div class="logo"><span class="ball"></span> <a href="index.html" style="text-decoration:none;color:inherit;">FIFA Hub 2026</a></div>
+    <nav class="nav-links">
+      <a href="live.html">Live</a>
+      <a href="index.html#groups">Groups</a>
+      <a href="teams.html">Teams</a>
+      <a href="index.html#schedule">Schedule</a>
+      <a href="predictions.html">Predict</a>
+      <a href="index.html#history">History</a>
+      <a href="about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero" style="padding-top:48px;padding-bottom:48px;">
+  <div class="wrap">
+    <div class="eyebrow">Refreshes Automatically</div>
+    <h1>Live Scores <span>&amp; Standings</span></h1>
+    <p class="lead">Every match and group table below is pulled live from our scores API. This page refreshes itself every 60 seconds — keep it open during matchdays for the latest results.</p>
+  </div>
+</section>
+
+<!-- ===== LIVE CONTENT ===== -->
+<section class="wrap">
+  <div class="live-status">
+    <span class="pulse"></span>
+    <span id="live-updated">Loading latest data…</span>
+    <button id="refresh-now" type="button">Refresh Now</button>
+  </div>
+
+  <div id="live-content">
+    <div class="empty-state">Fetching live scores…</div>
+  </div>
+</section>
+
+<div class="ad-slot">
+  <div class="ad-inner">
+    <ins class="adsbygoogle" style="display:block;width:100%;" data-ad-client="ca-pub-9810166137055589" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  </div>
+</div>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h4>Jump To</h4>
+        <ul>
+          <li><a href="index.html#today">Match Center</a></li>
+          <li><a href="index.html#groups">Group Standings (Static)</a></li>
+          <li><a href="teams.html">All 48 Teams</a></li>
+          <li><a href="predictions.html">Predictions &amp; Quiz</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>About This Page</h4>
+        <p>Data is fetched from football-data.org via our own API, cached for ~10 minutes. If no live data is available, this page will show a message instead of guessing scores.</p>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>FIFA World Cup &amp; Club World Cup Hub — Independent fan reference, not affiliated with FIFA</span>
+      <span>Updated June 14, 2026</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const GROUP_NAMES = {
+  GROUP_A:"Group A", GROUP_B:"Group B", GROUP_C:"Group C", GROUP_D:"Group D",
+  GROUP_E:"Group E", GROUP_F:"Group F", GROUP_G:"Group G", GROUP_H:"Group H",
+  GROUP_I:"Group I", GROUP_J:"Group J", GROUP_K:"Group K", GROUP_L:"Group L"
+};
+
+function statusBadge(status){
+  if(status === 'FINISHED') return '<span class="tag full">Full Time</span>';
+  if(status === 'LIVE' || status === 'IN_PLAY' || status === 'PAUSED') return '<span class="tag live">Live</span>';
+  return '<span class="tag">Scheduled</span>';
+}
+
+function formatKickoff(utcDate){
+  try{
+    return new Date(utcDate).toLocaleString('en-US',{ weekday:'short', month:'short', day:'numeric', hour:'numeric', minute:'2-digit' });
+  } catch(e){ return utcDate; }
+}
+
+function renderMatch(m){
+  const score = (m.homeScore ?? null) !== null
+    ? `<div class="score">${m.homeScore} <span class="vs">–</span> ${m.awayScore}</div>`
+    : `<div class="score"><span class="vs">vs</span></div>`;
+  const venue = m.venue || formatKickoff(m.utcDate);
+  return `
+    <div class="ticket">
+      <div class="meta"><span>${GROUP_NAMES[m.group] || m.group || 'Match'} · ${formatKickoff(m.utcDate)}</span>${statusBadge(m.status)}</div>
+      <div class="teams">
+        <div class="team">${m.home}</div>
+        ${score}
+        <div class="team right">${m.away}</div>
+      </div>
+      <div class="venue">${venue}</div>
+    </div>`;
+}
+
+function renderStandingsTable(rows){
+  return `
+    <table class="standings-mini">
+      <thead><tr><th style="text-align:left;">Team</th><th>P</th><th>W</th><th>D</th><th>L</th><th>GF</th><th>GA</th><th>GD</th><th>Pts</th></tr></thead>
+      <tbody>
+        ${rows.map(r=>`<tr><td class="team">${r.team}</td><td>${r.P}</td><td>${r.W}</td><td>${r.D}</td><td>${r.L}</td><td>${r.GF}</td><td>${r.GA}</td><td>${r.GD}</td><td>${r.Pts}</td></tr>`).join('')}
+      </tbody>
+    </table>`;
+}
+
+async function loadLive(){
+  const content = document.getElementById('live-content');
+  const updated = document.getElementById('live-updated');
+
+  try{
+    const resp = await fetch('/api/scores');
+    if(!resp.ok){
+      const err = await resp.json().catch(()=>({}));
+      throw new Error(err.error || ('HTTP ' + resp.status));
+    }
+    const data = await resp.json();
+    const matches = data.matches || [];
+    const standings = data.standings || {};
+
+    if(!matches.length){
+      content.innerHTML = '<div class="empty-state">No match data returned yet. This usually means the World Cup 2026 competition data isn\\'t populated on football-data.org\\'s free tier yet, or the season hasn\\'t started in their system. Check back closer to kickoff.</div>';
+      updated.textContent = 'Last checked: ' + new Date().toLocaleTimeString();
+      return;
+    }
+
+    // Group matches by group
+    const byGroup = {};
+    matches.forEach(m=>{
+      const g = m.group || 'OTHER';
+      byGroup[g] = byGroup[g] || [];
+      byGroup[g].push(m);
+    });
+
+    // Sort groups A-L then others
+    const groupKeys = Object.keys(byGroup).sort();
+
+    let html = '';
+    groupKeys.forEach(g=>{
+      html += `<div class="live-group-block">`;
+      html += `<div class="live-group-title">${GROUP_NAMES[g] || g}</div>`;
+      if(standings[g] && standings[g].length){
+        html += renderStandingsTable(standings[g]);
+      }
+      html += `<div class="match-grid">${byGroup[g].map(renderMatch).join('')}</div>`;
+      html += `</div>`;
+    });
+
+    content.innerHTML = html;
+    updated.textContent = 'Last updated: ' + new Date(data.updated).toLocaleTimeString() + ' · Auto-refreshes every 60s';
+  } catch(err){
+    content.innerHTML = `<div class="empty-state">Live scores aren't connected yet.<br><br>This page calls <code>/api/scores</code>, which needs a <code>FOOTBALL_DATA_TOKEN</code> environment variable set in your Vercel project (free key from football-data.org).<br><br><span style="color:var(--ink-soft);font-size:11px;">Error: ${err.message}</span></div>`;
+    updated.textContent = 'Not connected';
+  }
+}
+
+loadLive();
+document.getElementById('refresh-now').addEventListener('click', loadLive);
+setInterval(loadLive, 60000);
+</script>
+
+</body>
+</html>

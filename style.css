@@ -9,7 +9,7 @@
   --live:#E0473C;
   --line:#D8DCCF;
   --line-dark:rgba(245,242,234,0.18);
-  --display: 'Anton', sans-serif;
+  --display: 'Poppins', sans-serif;
   --body: 'Manrope', system-ui, sans-serif;
   --mono: 'IBM Plex Mono', monospace;
   --radius: 2px;
@@ -33,11 +33,11 @@ a{color:inherit;}
 }
 h1,h2,h3,h4{
   font-family:var(--display);
-  font-weight:400;
-  text-transform:uppercase;
-  letter-spacing:0.02em;
+  font-weight:700;
+  text-transform:none;
+  letter-spacing:-0.01em;
   margin:0;
-  line-height:1.05;
+  line-height:1.15;
 }
 .eyebrow{
   font-family:var(--mono);
@@ -239,6 +239,7 @@ header.site{
 }
 .daycard .big{
   font-family:var(--display);
+  font-weight:800;
   font-size:clamp(56px,10vw,96px);
   line-height:1;
   color:var(--amber);
@@ -322,7 +323,7 @@ table.standings td.team img.flag-inline{margin-right:8px;}
 .group-btn:hover{border-color:var(--turf);}
 .group-panel{display:none;}
 .group-panel.active{display:block;}
-.group-title{font-family:var(--display);font-size:22px;margin-bottom:4px;}
+.group-title{font-family:var(--display);font-weight:700;font-size:22px;margin-bottom:4px;}
 .group-sub{font-family:var(--mono);font-size:12px;color:var(--ink-soft);margin-bottom:16px;}
 table.standings{
   width:100%;border-collapse:collapse;font-family:var(--mono);font-size:13px;
@@ -359,7 +360,7 @@ table.standings tr.adv td.team{border-left:3px solid var(--amber);padding-left:7
   padding:20px;position:relative;overflow:hidden;
 }
 .player-card .num{
-  font-family:var(--display);font-size:64px;color:var(--line);
+  font-family:var(--display);font-weight:800;font-size:64px;color:var(--line);
   position:absolute;top:-10px;right:8px;line-height:1;z-index:0;
 }
 .player-card h3{font-size:19px;text-transform:none;font-family:var(--body);font-weight:800;position:relative;}
@@ -377,7 +378,7 @@ table.favorites th{
   font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);
   border-bottom:2px solid var(--ink);
 }
-table.favorites td.rank{font-family:var(--display);font-size:22px;width:54px;}
+table.favorites td.rank{font-family:var(--display);font-weight:700;font-size:22px;width:54px;}
 table.favorites td.pathway{font-family:var(--mono);font-size:12px;color:var(--ink-soft);}
 table.favorites td.bar-cell{width:160px;}
 .bar{height:8px;background:var(--line);border-radius:99px;overflow:hidden;}
@@ -401,7 +402,7 @@ table.history tr.host-2026 td{background:rgba(255,180,0,0.12);}
 .tally{
   border:1px solid var(--ink);border-radius:6px;padding:14px;text-align:center;background:var(--paper);
 }
-.tally .n{font-family:var(--display);font-size:34px;color:var(--turf);}
+.tally .n{font-family:var(--display);font-weight:800;font-size:34px;color:var(--turf);}
 .tally .c{font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.06em;margin-top:4px;}
 
 /* ===== CWC ===== */
@@ -539,7 +540,7 @@ table.standings tbody tr:hover, table.history tbody tr:hover, table.favorites tb
   background:var(--ink); color:var(--chalk); padding:14px 16px;
   display:flex; align-items:center; justify-content:space-between;
 }
-#pundit-head .title{font-family:var(--display); font-size:16px; letter-spacing:.04em;}
+#pundit-head .title{font-family:var(--display); font-weight:700; font-size:16px; letter-spacing:.04em;}
 #pundit-head .sub{font-family:var(--mono); font-size:10px; color:var(--amber); letter-spacing:.1em; text-transform:uppercase;}
 #pundit-close{background:none; border:none; color:var(--chalk); font-size:20px; cursor:pointer; line-height:1;}
 #pundit-msgs{
@@ -642,7 +643,7 @@ table.standings tbody tr:hover, table.history tbody tr:hover, table.favorites tb
 .quiz-score{
   text-align:center; padding:40px 20px;
 }
-.quiz-score .big{font-family:var(--display); font-size:64px; color:var(--turf);}
+.quiz-score .big{font-family:var(--display); font-weight:800; font-size:64px; color:var(--turf);}
 .quiz-score .sub{font-family:var(--mono); font-size:13px; color:var(--ink-soft); margin-top:8px;}
 .quiz-share{
   margin-top:18px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap;

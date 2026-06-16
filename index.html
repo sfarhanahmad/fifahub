@@ -12,7 +12,7 @@
 <link rel="canonical" href="https://fifahub-livid.vercel.app/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 
 <!-- Google AdSense — replace ca-pub-9810166137055589 with your publisher ID -->
@@ -99,6 +99,7 @@
     <div class="logo"><span class="ball"></span> FIFA Hub 2026</div>
     <nav class="nav-links">
       <a href="#today">Today</a>
+      <a href="live.html">Live</a>
       <a href="#groups">Groups</a>
       <a href="teams.html">Teams</a>
       <a href="#schedule">Schedule</a>
@@ -118,7 +119,8 @@
       <h1>World Cup <span>2026</span><br>Match Center</h1>
       <p class="lead">Live scores, full group tables for all 48 teams, the road to the final, players to watch, title probabilities, and the complete history of every FIFA World Cup and Club World Cup winner — all in one place.</p>
       <div class="hero-cta">
-        <a href="#today" class="btn primary">Today's Matches</a>
+        <a href="live.html" class="btn primary" style="background:var(--live);border-color:var(--live);color:var(--chalk);"><span class="live-dot" style="background:var(--chalk);"></span> Live Scores</a>
+        <a href="#today" class="btn ghost">Today's Matches</a>
         <a href="#groups" class="btn ghost">Group Standings</a>
         <a href="#history" class="btn ghost">Past Winners</a>
       </div>
@@ -138,10 +140,10 @@
 <section id="today" class="wrap">
   <div class="section-head">
     <div>
-      <div class="eyebrow">Matchday 1–2</div>
+      <div class="eyebrow">Matchday 1–2 Snapshot</div>
       <h2>Results &amp; Today's Fixtures</h2>
     </div>
-    <p>Final scores from the opening matches plus what's kicking off today and tomorrow. Update this section daily as results come in — see the editor's note in the footer.</p>
+    <p>A snapshot from the opening matchdays. For scores that update automatically as matches happen, visit the <a href="live.html" style="color:var(--turf-2);font-weight:700;">Live Scores page →</a></p>
   </div>
   <div class="match-grid">
 
@@ -237,8 +239,8 @@
 
 <section id="groups" class="wrap">
   <div class="section-head">
-    <div><div class="eyebrow">12 Groups · 48 Teams</div><h2>Group Standings</h2></div>
-    <p>Tap a letter to view that group's table. The top two teams (green bar) advance automatically to the Round of 32, joined by the eight best third-placed teams (amber).</p>
+    <div><div class="eyebrow" id="groups-eyebrow">12 Groups · 48 Teams · Live</div><h2>Group Standings</h2></div>
+    <p>Tap a letter to view that group's table. Top two (green bar) advance automatically, plus the eight best third-placed teams (amber). Tables update automatically from live match data.</p>
   </div>
   <div class="group-controls" role="tablist" aria-label="World Cup groups">
     <button class="group-btn active" data-group="A" type="button">A</button>
@@ -254,187 +256,159 @@
     <button class="group-btn" data-group="K" type="button">K</button>
     <button class="group-btn" data-group="L" type="button">L</button>
   </div>
-  <div class="group-panel active" id="group-A" data-group-panel="A">
-    <div class="group-title">Group A</div>
-    <div class="group-sub">Mexico City &amp; Guadalajara &middot; Jun 11–24</div>
-    <table class="standings">
-      <thead><tr><th style="text-align:left;">Team</th><th>P</th><th>W</th><th>D</th><th>L</th><th>GF</th><th>GA</th><th>GD</th><th>Pts</th></tr></thead>
-      <tbody>
-        <tr><td class="team"><img class="flag" src="https://flagcdn.com/h40/mx.png" alt="" loading="lazy">Mexico</td><td>1</td><td>1</td><td>0</td><td>0</td><td>2</td><td>0</td><td>+2</td><td>3</td></tr>
-        <tr><td class="team"><img class="flag" src="https://flagcdn.com/h40/kr.png" alt="" loading="lazy">South Korea</td><td>1</td><td>1</td><td>0</td><td>0</td><td>2</td><td>1</td><td>+1</td><td>3</td></tr>
-        <tr><td class="team"><img class="flag" src="https://flagcdn.com/h40/cz.png" alt="" loading="lazy">Czechia</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>2</td><td>−1</td><td>0</td></tr>
-        <tr><td class="team"><img class="flag" src="https://flagcdn.com/h40/za.png" alt="" loading="lazy">South Africa</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>2</td><td>−2</td><td>0</td></tr>
-      </tbody>
-    </table>
-    <div class="group-legend"><span><i class="swatch adv"></i> Automatic Round of 32</span><span><i class="swatch maybe"></i> Possible best third-place spot</span></div>
-    <div class="fixtures-mini">Mexico opened the tournament with a win over South Africa; South Korea came from behind to beat Czechia.</div>
-  </div>
-  <div class="group-panel" id="group-B" data-group-panel="B">
-    <div class="group-title">Group B</div>
-    <div class="group-sub">Toronto &amp; San Francisco Bay Area &middot; Jun 12–25</div>
-    <table class="standings">
-      <thead><tr><th style="text-align:left;">Team</th><th>P</th><th>W</th><th>D</th><th>L</th><th>GF</th><th>GA</th><th>GD</th><th>Pts</th></tr></thead>
-      <tbody>
-        <tr><td class="team"><img class="flag" src="https://flagcdn.com/h40/ca.png" alt="" loading="lazy">Canada</td><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td></tr>
-        <tr><td class="team"><img class="flag" src="https://flagcdn.com/h40/ba.png" alt="" loading="lazy">Bosnia &amp; Herzegovina</td><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td></tr>
-        <tr><td class="team"><img class="flag" src="https://flagcdn.com/h40/ch.png" alt="" loading="lazy">Switzerland</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-        <tr><td class="team"><img class="flag" src="https://flagcdn.com/h40/qa.png" alt="" loading="lazy">Qatar</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-      </tbody>
-    </table>
-    <div class="group-legend"><span><i class="swatch adv"></i> Automatic Round of 32</span><span><i class="swatch maybe"></i> Possible best third-place spot</span></div>
-    <div class="fixtures-mini">Canada's first-ever World Cup point came via a 1–1 draw with Bosnia. Qatar face Switzerland today.</div>
-  </div>
-  <div class="group-panel" id="group-C" data-group-panel="C">
-    <div class="group-title">Group C</div>
-    <div class="group-sub">New York/New Jersey &amp; Boston &middot; Jun 13–26</div>
-    <table class="standings">
-      <thead><tr><th style="text-align:left;">Team</th><th>P</th><th>W</th><th>D</th><th>L</th><th>GF</th><th>GA</th><th>GD</th><th>Pts</th></tr></thead>
-      <tbody>
-        <tr><td class="team"><img class="flag" src="https://flagcdn.com/h40/br.png" alt="" loading="lazy">Brazil</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-        <tr><td class="team"><img class="flag" src="https://flagcdn.com/h40/gb-sct.png" alt="" loading="lazy">Scotland</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-        <tr><td class="team"><img class="flag" src="https://flagcdn.com/h40/ma.png" alt="" loading="lazy">Morocco</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-        <tr><td class="team"><img class="flag" src="https://flagcdn.com/h40/ht.png" alt="" loading="lazy">Haiti</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-      </tbody>
-    </table>
-    <div class="group-legend"><span><i class="swatch adv"></i> Automatic Round of 32</span><span><i class="swatch maybe"></i> Possible best third-place spot</span></div>
-    <div class="fixtures-mini">Brazil face Morocco today at MetLife Stadium; Haiti play their first World Cup match in 52 years against Scotland.</div>
-  </div>
-  <div class="group-panel" id="group-D" data-group-panel="D">
-    <div class="group-title">Group D</div>
-    <div class="group-sub">Los Angeles &amp; Vancouver &middot; Jun 13–26</div>
-    <table class="standings">
-      <thead><tr><th style="text-align:left;">Team</th><th>P</th><th>W</th><th>D</th><th>L</th><th>GF</th><th>GA</th><th>GD</th><th>Pts</th></tr></thead>
-      <tbody>
-        <tr><td class="team"><img class="flag" src="https://flagcdn.com/h40/us.png" alt="" loading="lazy">USA</td><td>1</td><td>1</td><td>0</td><td>0</td><td>4</td><td>1</td><td>+3</td><td>3</td></tr>
-        <tr><td class="team"><img class="flag" src="https://flagcdn.com/h40/au.png" alt="" loading="lazy">Australia</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-        <tr><td class="team"><img class="flag" src="https://flagcdn.com/h40/tr.png" alt="" loading="lazy">Türkiye</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-        <tr><td class="team"><img class="flag" src="https://flagcdn.com/h40/py.png" alt="" loading="lazy">Paraguay</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>4</td><td>−3</td><td>0</td></tr>
-      </tbody>
-    </table>
-    <div class="group-legend"><span><i class="swatch adv"></i> Automatic Round of 32</span><span><i class="swatch maybe"></i> Possible best third-place spot</span></div>
-    <div class="fixtures-mini">The co-host USA opened with a 4–1 win over Paraguay, Folarin Balogun scoring twice.</div>
-  </div>
-  <div class="group-panel" id="group-E" data-group-panel="E">
-    <div class="group-title">Group E</div>
-    <div class="group-sub">Houston &amp; Philadelphia &middot; Jun 14–27</div>
-    <table class="standings">
-      <thead><tr><th style="text-align:left;">Team</th><th>P</th><th>W</th><th>D</th><th>L</th><th>GF</th><th>GA</th><th>GD</th><th>Pts</th></tr></thead>
-      <tbody>
-        <tr><td class="team"><img class="flag" src="https://flagcdn.com/h40/de.png" alt="" loading="lazy">Germany</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-        <tr><td class="team"><img class="flag" src="https://flagcdn.com/h40/ec.png" alt="" loading="lazy">Ecuador</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-        <tr><td class="team"><img class="flag" src="https://flagcdn.com/h40/ci.png" alt="" loading="lazy">Côte d'Ivoire</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-        <tr><td class="team"><img class="flag" src="https://flagcdn.com/h40/cw.png" alt="" loading="lazy">Curaçao</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-      </tbody>
-    </table>
-    <div class="group-legend"><span><i class="swatch adv"></i> Automatic Round of 32</span><span><i class="swatch maybe"></i> Possible best third-place spot</span></div>
-    <div class="fixtures-mini">Curaçao — population under 150,000 — make their World Cup debut as the smallest nation ever to qualify.</div>
-  </div>
-  <div class="group-panel" id="group-F" data-group-panel="F">
-    <div class="group-title">Group F</div>
-    <div class="group-sub">Arlington &amp; Guadalajara &middot; Jun 14–27</div>
-    <table class="standings">
-      <thead><tr><th style="text-align:left;">Team</th><th>P</th><th>W</th><th>D</th><th>L</th><th>GF</th><th>GA</th><th>GD</th><th>Pts</th></tr></thead>
-      <tbody>
-        <tr><td class="team"><img class="flag" src="https://flagcdn.com/h40/nl.png" alt="" loading="lazy">Netherlands</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-        <tr><td class="team"><img class="flag" src="https://flagcdn.com/h40/jp.png" alt="" loading="lazy">Japan</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-        <tr><td class="team"><img class="flag" src="https://flagcdn.com/h40/se.png" alt="" loading="lazy">Sweden</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-        <tr><td class="team"><img class="flag" src="https://flagcdn.com/h40/tn.png" alt="" loading="lazy">Tunisia</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-      </tbody>
-    </table>
-    <div class="group-legend"><span><i class="swatch adv"></i> Automatic Round of 32</span><span><i class="swatch maybe"></i> Possible best third-place spot</span></div>
-    <div class="fixtures-mini">Sweden return to the World Cup for the first time since 2018.</div>
-  </div>
-  <div class="group-panel" id="group-G" data-group-panel="G">
-    <div class="group-title">Group G</div>
-    <div class="group-sub">Seattle &amp; Los Angeles &middot; Jun 15–26</div>
-    <table class="standings">
-      <thead><tr><th style="text-align:left;">Team</th><th>P</th><th>W</th><th>D</th><th>L</th><th>GF</th><th>GA</th><th>GD</th><th>Pts</th></tr></thead>
-      <tbody>
-        <tr><td class="team"><img class="flag" src="https://flagcdn.com/h40/be.png" alt="" loading="lazy">Belgium</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-        <tr><td class="team"><img class="flag" src="https://flagcdn.com/h40/ir.png" alt="" loading="lazy">Iran</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-        <tr><td class="team"><img class="flag" src="https://flagcdn.com/h40/eg.png" alt="" loading="lazy">Egypt</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-        <tr><td class="team"><img class="flag" src="https://flagcdn.com/h40/nz.png" alt="" loading="lazy">New Zealand</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-      </tbody>
-    </table>
-    <div class="group-legend"><span><i class="swatch adv"></i> Automatic Round of 32</span><span><i class="swatch maybe"></i> Possible best third-place spot</span></div>
-    <div class="fixtures-mini">Egypt return for the first time since 1990; New Zealand qualified via the inter-confederation playoff.</div>
-  </div>
-  <div class="group-panel" id="group-H" data-group-panel="H">
-    <div class="group-title">Group H</div>
-    <div class="group-sub">Atlanta &amp; Miami &middot; Jun 15–25</div>
-    <table class="standings">
-      <thead><tr><th style="text-align:left;">Team</th><th>P</th><th>W</th><th>D</th><th>L</th><th>GF</th><th>GA</th><th>GD</th><th>Pts</th></tr></thead>
-      <tbody>
-        <tr><td class="team"><img class="flag" src="https://flagcdn.com/h40/es.png" alt="" loading="lazy">Spain</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-        <tr><td class="team"><img class="flag" src="https://flagcdn.com/h40/uy.png" alt="" loading="lazy">Uruguay</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-        <tr><td class="team"><img class="flag" src="https://flagcdn.com/h40/sa.png" alt="" loading="lazy">Saudi Arabia</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-        <tr><td class="team"><img class="flag" src="https://flagcdn.com/h40/cv.png" alt="" loading="lazy">Cape Verde</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-      </tbody>
-    </table>
-    <div class="group-legend"><span><i class="swatch adv"></i> Automatic Round of 32</span><span><i class="swatch maybe"></i> Possible best third-place spot</span></div>
-    <div class="fixtures-mini">Cape Verde — the smallest African nation ever to qualify — make their World Cup debut. Spain enter as FIFA's top-ranked side.</div>
-  </div>
-  <div class="group-panel" id="group-I" data-group-panel="I">
-    <div class="group-title">Group I</div>
-    <div class="group-sub">East Rutherford &amp; Foxborough &middot; Jun 16–26</div>
-    <table class="standings">
-      <thead><tr><th style="text-align:left;">Team</th><th>P</th><th>W</th><th>D</th><th>L</th><th>GF</th><th>GA</th><th>GD</th><th>Pts</th></tr></thead>
-      <tbody>
-        <tr><td class="team"><img class="flag" src="https://flagcdn.com/h40/fr.png" alt="" loading="lazy">France</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-        <tr><td class="team"><img class="flag" src="https://flagcdn.com/h40/no.png" alt="" loading="lazy">Norway</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-        <tr><td class="team"><img class="flag" src="https://flagcdn.com/h40/sn.png" alt="" loading="lazy">Senegal</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-        <tr><td class="team"><img class="flag" src="https://flagcdn.com/h40/iq.png" alt="" loading="lazy">Iraq</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-      </tbody>
-    </table>
-    <div class="group-legend"><span><i class="swatch adv"></i> Automatic Round of 32</span><span><i class="swatch maybe"></i> Possible best third-place spot</span></div>
-    <div class="fixtures-mini">Norway, led by Erling Haaland, qualify for their first World Cup since 1998.</div>
-  </div>
-  <div class="group-panel" id="group-J" data-group-panel="J">
-    <div class="group-title">Group J</div>
-    <div class="group-sub">Kansas City &amp; Santa Clara &middot; Jun 16–26</div>
-    <table class="standings">
-      <thead><tr><th style="text-align:left;">Team</th><th>P</th><th>W</th><th>D</th><th>L</th><th>GF</th><th>GA</th><th>GD</th><th>Pts</th></tr></thead>
-      <tbody>
-        <tr><td class="team"><img class="flag" src="https://flagcdn.com/h40/ar.png" alt="" loading="lazy">Argentina</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-        <tr><td class="team"><img class="flag" src="https://flagcdn.com/h40/at.png" alt="" loading="lazy">Austria</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-        <tr><td class="team"><img class="flag" src="https://flagcdn.com/h40/dz.png" alt="" loading="lazy">Algeria</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-        <tr><td class="team"><img class="flag" src="https://flagcdn.com/h40/jo.png" alt="" loading="lazy">Jordan</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-      </tbody>
-    </table>
-    <div class="group-legend"><span><i class="swatch adv"></i> Automatic Round of 32</span><span><i class="swatch maybe"></i> Possible best third-place spot</span></div>
-    <div class="fixtures-mini">Defending champions Argentina open their title defence against Algeria. Jordan make their World Cup debut.</div>
-  </div>
-  <div class="group-panel" id="group-K" data-group-panel="K">
-    <div class="group-title">Group K</div>
-    <div class="group-sub">Houston &amp; Mexico City &middot; Jun 17–26</div>
-    <table class="standings">
-      <thead><tr><th style="text-align:left;">Team</th><th>P</th><th>W</th><th>D</th><th>L</th><th>GF</th><th>GA</th><th>GD</th><th>Pts</th></tr></thead>
-      <tbody>
-        <tr><td class="team"><img class="flag" src="https://flagcdn.com/h40/pt.png" alt="" loading="lazy">Portugal</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-        <tr><td class="team"><img class="flag" src="https://flagcdn.com/h40/co.png" alt="" loading="lazy">Colombia</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-        <tr><td class="team"><img class="flag" src="https://flagcdn.com/h40/uz.png" alt="" loading="lazy">Uzbekistan</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-        <tr><td class="team"><img class="flag" src="https://flagcdn.com/h40/cd.png" alt="" loading="lazy">DR Congo</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-      </tbody>
-    </table>
-    <div class="group-legend"><span><i class="swatch adv"></i> Automatic Round of 32</span><span><i class="swatch maybe"></i> Possible best third-place spot</span></div>
-    <div class="fixtures-mini">Uzbekistan and DR Congo both make their World Cup debuts in Group K.</div>
-  </div>
-  <div class="group-panel" id="group-L" data-group-panel="L">
-    <div class="group-title">Group L</div>
-    <div class="group-sub">Arlington &amp; Toronto &middot; Jun 17–26</div>
-    <table class="standings">
-      <thead><tr><th style="text-align:left;">Team</th><th>P</th><th>W</th><th>D</th><th>L</th><th>GF</th><th>GA</th><th>GD</th><th>Pts</th></tr></thead>
-      <tbody>
-        <tr><td class="team"><img class="flag" src="https://flagcdn.com/h40/gb-eng.png" alt="" loading="lazy">England</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-        <tr><td class="team"><img class="flag" src="https://flagcdn.com/h40/hr.png" alt="" loading="lazy">Croatia</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-        <tr><td class="team"><img class="flag" src="https://flagcdn.com/h40/gh.png" alt="" loading="lazy">Ghana</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-        <tr><td class="team"><img class="flag" src="https://flagcdn.com/h40/pa.png" alt="" loading="lazy">Panama</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-      </tbody>
-    </table>
-    <div class="group-legend"><span><i class="swatch adv"></i> Automatic Round of 32</span><span><i class="swatch maybe"></i> Possible best third-place spot</span></div>
-    <div class="fixtures-mini">England open against Croatia on June 17 — a repeat of their 2018 semi-final.</div>
+  <div id="groups-container">
+    <!-- rendered by JS below; static fallback rows shown until data loads -->
+    <div class="group-panel active" id="group-A" data-group-panel="A">
+      <div class="group-title">Group A</div>
+      <div class="group-sub">Mexico City &amp; Guadalajara &middot; Jun 11–24</div>
+      <table class="standings"><thead><tr><th style="text-align:left;">Team</th><th>P</th><th>W</th><th>D</th><th>L</th><th>GF</th><th>GA</th><th>GD</th><th>Pts</th></tr></thead>
+      <tbody id="tbody-A">
+        <tr><td class="team"><img class="flag-inline" src="https://flagcdn.com/h20/mx.png" alt="">Mexico</td><td>1</td><td>1</td><td>0</td><td>0</td><td>2</td><td>0</td><td>+2</td><td>3</td></tr>
+        <tr><td class="team"><img class="flag-inline" src="https://flagcdn.com/h20/kr.png" alt="">South Korea</td><td>1</td><td>1</td><td>0</td><td>0</td><td>2</td><td>1</td><td>+1</td><td>3</td></tr>
+        <tr><td class="team"><img class="flag-inline" src="https://flagcdn.com/h20/cz.png" alt="">Czechia</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>2</td><td>-1</td><td>0</td></tr>
+        <tr><td class="team"><img class="flag-inline" src="https://flagcdn.com/h20/za.png" alt="">South Africa</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>2</td><td>-2</td><td>0</td></tr>
+      </tbody></table>
+      <div class="group-legend"><span><i class="swatch adv"></i> Automatic Round of 32</span><span><i class="swatch maybe"></i> Possible best third-place spot</span></div>
+    </div>
   </div>
 </section>
+<script>
+(async function initGroups(){
+  // Team roster from our data file
+  const TEAMS_URL = '/data/teams.json';
+  // Name normalization: football-data.org names -> our names
+  const NAME_MAP = {
+    "Bosnia and Herzegovina":"Bosnia & Herzegovina",
+    "Korea Republic":"South Korea",
+    "United States":"USA",
+    "Turkey":"Türkiye",
+    "Ivory Coast":"Côte d'Ivoire",
+    "Cote d'Ivoire":"Côte d'Ivoire",
+    "Congo DR":"DR Congo",
+    "Democratic Republic of Congo":"DR Congo",
+    "Curacao":"Curaçao",
+    "Cape Verde Islands":"Cape Verde",
+  };
+
+  const META = {
+    A:["Mexico City & Guadalajara","Jun 11–24","Mexico opened the tournament with a win over South Africa; South Korea came from behind to beat Czechia."],
+    B:["Toronto & San Francisco Bay Area","Jun 12–25","Canada's first-ever World Cup point came via a 1–1 draw with Bosnia."],
+    C:["New York/New Jersey & Boston","Jun 13–26","Brazil face Morocco at MetLife Stadium; Haiti play their first World Cup match in 52 years."],
+    D:["Los Angeles & Vancouver","Jun 13–26","USA opened with a 4–1 win over Paraguay, Folarin Balogun scoring twice."],
+    E:["Houston & Philadelphia","Jun 14–27","Curaçao make their World Cup debut as the smallest nation ever to qualify."],
+    F:["Arlington & Guadalajara","Jun 14–27","Sweden return to the World Cup for the first time since 2018."],
+    G:["Seattle & Los Angeles","Jun 15–26","Egypt return for the first time since 1990; New Zealand qualified via the inter-confederation playoff."],
+    H:["Atlanta & Miami","Jun 15–25","Cape Verde make their World Cup debut. Spain enter as FIFA's top-ranked side."],
+    I:["East Rutherford & Foxborough","Jun 16–26","Norway, led by Erling Haaland, qualify for their first World Cup since 1998."],
+    J:["Kansas City & Santa Clara","Jun 16–26","Defending champions Argentina open their title defence against Algeria. Jordan make their World Cup debut."],
+    K:["Houston & Mexico City","Jun 17–26","Uzbekistan and DR Congo both make their World Cup debuts in Group K."],
+    L:["Arlington & Toronto","Jun 17–26","England open against Croatia on June 17 — a repeat of their 2018 semi-final."],
+  };
+
+  function normName(n){ return NAME_MAP[n] || n; }
+
+  function flagUrl(code){ return `https://flagcdn.com/h20/${code}.png`; }
+
+  function renderTable(groupLetter, teamsRoster, liveStandings){
+    const container = document.getElementById('groups-container');
+    const [venue, dates, note] = META[groupLetter] || ["","",""];
+
+    // Build base stats: every team starts at 0
+    const stats = {};
+    teamsRoster.forEach(t => {
+      stats[t.name] = {name: t.name, flag: t.flag, P:0, W:0, D:0, L:0, GF:0, GA:0, GD:0, Pts:0};
+    });
+
+    // Overlay live standings from API (keyed by team name from football-data)
+    if(liveStandings){
+      liveStandings.forEach(row => {
+        const n = normName(row.team);
+        if(stats[n]){
+          stats[n] = {...stats[n], ...row, name: stats[n].name, flag: stats[n].flag};
+        }
+      });
+    }
+
+    // Sort by Pts, GD, GF
+    const rows = Object.values(stats).sort((a,b)=> b.Pts-a.Pts || b.GD-a.GD || b.GF-a.GF);
+
+    const tbody = rows.map((r,i) => {
+      const adv = i < 2 ? 'style="border-left:3px solid var(--turf);padding-left:7px;"' : '';
+      const gd = r.GD >= 0 ? `+${r.GD}` : r.GD;
+      return `<tr><td class="team" ${adv}><img class="flag-inline" src="${flagUrl(r.flag)}" alt="" loading="lazy">${r.name}</td><td>${r.P}</td><td>${r.W}</td><td>${r.D}</td><td>${r.L}</td><td>${r.GF}</td><td>${r.GA}</td><td>${gd}</td><td>${r.Pts}</td></tr>`;
+    }).join('');
+
+    return `
+      <div class="group-panel" id="group-${groupLetter}" data-group-panel="${groupLetter}">
+        <div class="group-title">Group ${groupLetter}</div>
+        <div class="group-sub">${venue} &middot; ${dates}</div>
+        <table class="standings">
+          <thead><tr><th style="text-align:left;">Team</th><th>P</th><th>W</th><th>D</th><th>L</th><th>GF</th><th>GA</th><th>GD</th><th>Pts</th></tr></thead>
+          <tbody>${tbody}</tbody>
+        </table>
+        <div class="group-legend"><span><i class="swatch adv"></i> Automatic Round of 32</span><span><i class="swatch maybe"></i> Possible best third-place spot</span></div>
+        <div class="fixtures-mini">${note}</div>
+      </div>`;
+  }
+
+  function attachTabs(activeGroup){
+    document.querySelectorAll('.group-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.group-btn').forEach(b => b.classList.toggle('active', b===btn));
+        document.querySelectorAll('.group-panel').forEach(p => p.classList.toggle('active', p.dataset.groupPanel === btn.dataset.group));
+      });
+    });
+  }
+
+  try {
+    // Load roster + live standings in parallel
+    const [teamsResp, scoresResp] = await Promise.all([
+      fetch(TEAMS_URL),
+      fetch('/api/scores').catch(() => null)
+    ]);
+
+    const allTeams = await teamsResp.json();
+
+    let liveStandingsByGroup = {};
+    if(scoresResp && scoresResp.ok){
+      const scoresData = await scoresResp.json();
+      liveStandingsByGroup = scoresData.standings || {};
+      document.getElementById('groups-eyebrow').textContent = '12 Groups · 48 Teams · Live · Updated ' + new Date(scoresData.updated).toLocaleTimeString();
+    }
+
+    // Group teams by group letter
+    const byGroup = {};
+    allTeams.forEach(t => {
+      if(!byGroup[t.group]) byGroup[t.group] = [];
+      byGroup[t.group].push(t);
+    });
+
+    // Render all group panels
+    const groupLetters = Object.keys(byGroup).sort();
+    const container = document.getElementById('groups-container');
+
+    // Map football-data GROUP_A -> A
+    const normGroupKey = (k) => k.replace('GROUP_', '');
+    const normalizedStandings = {};
+    Object.entries(liveStandingsByGroup).forEach(([k,v]) => {
+      normalizedStandings[normGroupKey(k)] = v;
+    });
+
+    container.innerHTML = groupLetters.map((g, i) =>
+      renderTable(g, byGroup[g], normalizedStandings[g] || null)
+        .replace('class="group-panel"', `class="group-panel${i===0?' active':''}"`)
+    ).join('');
+
+    attachTabs(groupLetters[0]);
+
+  } catch(err) {
+    // Static fallback already visible for Group A; attach tabs and continue
+    attachTabs('A');
+    console.warn('Groups dynamic load failed:', err.message);
+  }
+})();
+</script>
+
 <!-- ===== SCHEDULE ===== -->
 <section id="schedule" class="wrap">
   <div class="section-head">
