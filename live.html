@@ -5,53 +5,61 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>World Cup 2026 Live Scores &amp; Standings — Updated Automatically</title>
 <meta name="description" content="Live and today's FIFA World Cup 2026 match scores, plus auto-updating group standings for all 12 groups — refreshes automatically as results come in.">
-<meta property="og:title" content="World Cup 2026 — Live Scores &amp; Standings">
-<meta property="og:description" content="Real-time World Cup 2026 scores and group standings, refreshed automatically.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://fifahub-livid.vercel.app/live.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
-
-<!-- Google AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9810166137055589" crossorigin="anonymous"></script>
-
 <style>
-.live-status{
-  display:flex; align-items:center; gap:10px; font-family:var(--mono); font-size:12px;
-  letter-spacing:.1em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:24px;
+.live-bar{
+  display:flex;align-items:center;gap:12px;
+  font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--ink-soft);margin-bottom:28px;flex-wrap:wrap;
 }
-.live-status .pulse{
-  width:8px; height:8px; border-radius:50%; background:var(--live);
-  animation:pulse 1.4s infinite;
+.live-bar .dot{width:8px;height:8px;border-radius:50%;background:var(--live);animation:pulse 1.4s infinite;flex-shrink:0;}
+#refresh-btn{
+  font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.08em;
+  border:1px solid var(--ink);background:var(--paper);border-radius:99px;
+  padding:6px 16px;cursor:pointer;margin-left:auto;
 }
-.live-status button{
-  font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:.08em;
-  border:1px solid var(--ink); background:var(--paper); border-radius:99px; padding:6px 14px;
-  cursor:pointer; margin-left:auto;
-}
-.live-status button:hover{border-color:var(--turf); color:var(--turf);}
-.live-group-block{margin-bottom:36px;}
-.live-group-title{font-size:20px; font-weight:700; margin-bottom:12px;}
-.standings-mini{width:100%; border-collapse:collapse; font-family:var(--mono); font-size:12.5px; margin-bottom:18px; background:var(--paper);}
-.standings-mini th, .standings-mini td{padding:8px 6px; text-align:center; border-bottom:1px solid var(--line);}
-.standings-mini th{font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft); border-bottom:2px solid var(--ink);}
-.standings-mini td.team{text-align:left; font-weight:600; font-family:var(--body);}
-.empty-state{
-  font-family:var(--mono); font-size:13px; color:var(--ink-soft); text-align:center;
-  padding:48px 20px; border:1px dashed var(--line); border-radius:6px;
-}
+#refresh-btn:hover{border-color:var(--turf);color:var(--turf);}
+.group-block{margin-bottom:40px;}
+.group-block h3{font-size:18px;font-weight:700;margin-bottom:4px;}
+.group-block .sub{font-family:var(--mono);font-size:11px;color:var(--ink-soft);margin-bottom:14px;letter-spacing:.06em;text-transform:uppercase;}
+.std-table{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:13px;background:var(--paper);margin-bottom:16px;}
+.std-table th,.std-table td{padding:9px 6px;text-align:center;border-bottom:1px solid var(--line);}
+.std-table th{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);border-bottom:2px solid var(--ink);}
+.std-table td.tn{text-align:left;font-weight:600;font-family:var(--body);padding-left:10px;}
+.std-table tbody tr:nth-child(-n+2) td.tn{border-left:3px solid var(--turf);}
+.match-mini{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;margin-bottom:8px;}
+.mm{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:12px 14px;}
+.mm .meta{font-family:var(--mono);font-size:10px;color:var(--ink-soft);letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;}
+.mm .teams{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:8px;}
+.mm .team{font-size:13px;font-weight:700;display:flex;align-items:center;gap:6px;}
+.mm .team.r{justify-content:flex-end;flex-direction:row-reverse;}
+.mm .score{font-family:var(--mono);font-size:20px;font-weight:600;text-align:center;white-space:nowrap;}
+.mm .score .sep{font-size:13px;color:var(--ink-soft);}
+.mm img{width:20px;height:auto;border-radius:1px;box-shadow:0 0 0 1px var(--line);}
+.badge{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:99px;}
+.badge.ft{background:var(--ink);color:var(--chalk);}
+.badge.live{background:var(--live);color:var(--chalk);}
+.badge.sched{border:1px solid var(--line);color:var(--ink-soft);}
+.empty{font-family:var(--mono);font-size:13px;color:var(--ink-soft);text-align:center;padding:60px 20px;border:1px dashed var(--line);border-radius:6px;}
+.section-tabs{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap;}
+.stab{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:8px 18px;border:1px solid var(--ink);border-radius:99px;cursor:pointer;background:var(--paper);}
+.stab.active{background:var(--turf);color:var(--chalk);border-color:var(--turf);}
+.tab-panel{display:none;}
+.tab-panel.active{display:block;}
 </style>
 </head>
 <body>
-
-<!-- ===== HEADER ===== -->
 <header class="site">
   <div class="wrap nav">
-    <div class="logo"><span class="ball"></span> <a href="index.html" style="text-decoration:none;color:inherit;">FIFA Hub 2026</a></div>
+    <div class="logo"><span class="ball"></span><a href="index.html" style="text-decoration:none;color:inherit;">FIFA Hub 2026</a></div>
     <nav class="nav-links">
-      <a href="live.html">Live</a>
+      <a href="live.html" style="border-bottom:2px solid var(--amber);">Live</a>
       <a href="index.html#groups">Groups</a>
       <a href="teams.html">Teams</a>
       <a href="index.html#schedule">Schedule</a>
@@ -62,26 +70,30 @@
   </div>
 </header>
 
-<!-- ===== HERO ===== -->
-<section class="hero" style="padding-top:48px;padding-bottom:48px;">
+<section class="hero" style="padding:48px 0;">
   <div class="wrap">
-    <div class="eyebrow">Refreshes Automatically</div>
+    <div class="eyebrow">Auto-refreshes every 60 seconds</div>
     <h1>Live Scores <span>&amp; Standings</span></h1>
-    <p class="lead">Every match and group table below is pulled live from our scores API. This page refreshes itself every 60 seconds — keep it open during matchdays for the latest results.</p>
+    <p class="lead">Every result, upcoming fixture and group table pulled live from our scores API. Keep this page open on matchdays.</p>
   </div>
 </section>
 
-<!-- ===== LIVE CONTENT ===== -->
 <section class="wrap">
-  <div class="live-status">
-    <span class="pulse"></span>
-    <span id="live-updated">Loading latest data…</span>
-    <button id="refresh-now" type="button">Refresh Now</button>
+  <div class="live-bar">
+    <span class="dot"></span>
+    <span id="status-txt">Loading…</span>
+    <button id="refresh-btn" type="button">Refresh Now</button>
   </div>
 
-  <div id="live-content">
-    <div class="empty-state">Fetching live scores…</div>
+  <div class="section-tabs">
+    <button class="stab active" data-tab="results">Results</button>
+    <button class="stab" data-tab="upcoming">Upcoming</button>
+    <button class="stab" data-tab="standings">Standings</button>
   </div>
+
+  <div class="tab-panel active" id="tab-results"><div class="empty">Loading…</div></div>
+  <div class="tab-panel" id="tab-upcoming"><div class="empty">Loading…</div></div>
+  <div class="tab-panel" id="tab-standings"><div class="empty">Loading…</div></div>
 </section>
 
 <div class="ad-slot">
@@ -91,133 +103,175 @@
 </div>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 
-<!-- ===== FOOTER ===== -->
 <footer>
   <div class="wrap">
     <div class="footer-grid">
-      <div>
-        <h4>Jump To</h4>
+      <div><h4>Jump To</h4>
         <ul>
-          <li><a href="index.html#today">Match Center</a></li>
-          <li><a href="index.html#groups">Group Standings (Static)</a></li>
+          <li><a href="index.html">Match Center</a></li>
           <li><a href="teams.html">All 48 Teams</a></li>
           <li><a href="predictions.html">Predictions &amp; Quiz</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="privacy.html">Privacy Policy</a></li>
         </ul>
       </div>
-      <div>
-        <h4>About This Page</h4>
-        <p>Data is fetched from football-data.org via our own API, cached for ~10 minutes. If no live data is available, this page will show a message instead of guessing scores.</p>
-      </div>
+      <div><h4>Data</h4><p>Scores from football-data.org via our API, cached ~10 min. Independent fan site — not affiliated with FIFA.</p></div>
     </div>
-    <div class="foot-bottom">
-      <span>FIFA World Cup &amp; Club World Cup Hub — Independent fan reference, not affiliated with FIFA</span>
-      <span>Updated June 14, 2026</span>
-    </div>
+    <div class="foot-bottom"><span>FIFA Hub 2026</span><span id="footer-date"></span></div>
   </div>
 </footer>
 
 <script>
-const GROUP_NAMES = {
-  GROUP_A:"Group A", GROUP_B:"Group B", GROUP_C:"Group C", GROUP_D:"Group D",
-  GROUP_E:"Group E", GROUP_F:"Group F", GROUP_G:"Group G", GROUP_H:"Group H",
-  GROUP_I:"Group I", GROUP_J:"Group J", GROUP_K:"Group K", GROUP_L:"Group L"
+// Name map: football-data.org -> our display names
+const NM = {
+  "United States":"USA","Bosnia-Herzegovina":"Bosnia & Herzegovina",
+  "Korea Republic":"South Korea","Turkey":"Türkiye","Ivory Coast":"Côte d'Ivoire",
+  "Cote d'Ivoire":"Côte d'Ivoire","Congo DR":"DR Congo","Curacao":"Curaçao",
+  "Cape Verde Islands":"Cape Verde","Bosnia and Herzegovina":"Bosnia & Herzegovina"
+};
+const FLAG = {
+  "Mexico":"mx","South Africa":"za","South Korea":"kr","Czechia":"cz",
+  "Canada":"ca","Bosnia & Herzegovina":"ba","Switzerland":"ch","Qatar":"qa",
+  "Brazil":"br","Morocco":"ma","Haiti":"ht","Scotland":"gb-sct",
+  "USA":"us","Australia":"au","Türkiye":"tr","Paraguay":"py",
+  "Germany":"de","Ecuador":"ec","Côte d'Ivoire":"ci","Curaçao":"cw",
+  "Netherlands":"nl","Japan":"jp","Sweden":"se","Tunisia":"tn",
+  "Belgium":"be","Iran":"ir","Egypt":"eg","New Zealand":"nz",
+  "Spain":"es","Uruguay":"uy","Saudi Arabia":"sa","Cape Verde":"cv",
+  "France":"fr","Norway":"no","Senegal":"sn","Iraq":"iq",
+  "Argentina":"ar","Austria":"at","Algeria":"dz","Jordan":"jo",
+  "Portugal":"pt","Colombia":"co","Uzbekistan":"uz","DR Congo":"cd",
+  "England":"gb-eng","Croatia":"hr","Ghana":"gh","Panama":"pa"
+};
+const GN = {
+  GROUP_A:"Group A",GROUP_B:"Group B",GROUP_C:"Group C",GROUP_D:"Group D",
+  GROUP_E:"Group E",GROUP_F:"Group F",GROUP_G:"Group G",GROUP_H:"Group H",
+  GROUP_I:"Group I",GROUP_J:"Group J",GROUP_K:"Group K",GROUP_L:"Group L"
+};
+const VENUES = {
+  GROUP_A:"Mexico City & Guadalajara",GROUP_B:"Toronto & San Francisco",
+  GROUP_C:"New York/NJ & Boston",GROUP_D:"Los Angeles & Vancouver",
+  GROUP_E:"Houston & Philadelphia",GROUP_F:"Arlington & Guadalajara",
+  GROUP_G:"Seattle & Los Angeles",GROUP_H:"Atlanta & Miami",
+  GROUP_I:"East Rutherford & Foxborough",GROUP_J:"Kansas City & Santa Clara",
+  GROUP_K:"Houston & Mexico City",GROUP_L:"Arlington & Toronto"
 };
 
-function statusBadge(status){
-  if(status === 'FINISHED') return '<span class="tag full">Full Time</span>';
-  if(status === 'LIVE' || status === 'IN_PLAY' || status === 'PAUSED') return '<span class="tag live">Live</span>';
-  return '<span class="tag">Scheduled</span>';
+function norm(n){ return NM[n]||n; }
+function flag(name){
+  const code = FLAG[name]||FLAG[norm(name)]||'';
+  return code ? `<img src="https://flagcdn.com/h20/${code}.png" alt="" style="width:20px;height:auto;border-radius:1px;box-shadow:0 0 0 1px var(--line);vertical-align:-3px;">` : '';
+}
+function badge(status){
+  if(status==='FINISHED') return '<span class="badge ft">FT</span>';
+  if(['LIVE','IN_PLAY','PAUSED'].includes(status)) return '<span class="badge live">● Live</span>';
+  return '<span class="badge sched">Upcoming</span>';
+}
+function fmtDate(d){
+  return new Date(d).toLocaleString('en-US',{weekday:'short',month:'short',day:'numeric',hour:'numeric',minute:'2-digit'});
+}
+function matchCard(m){
+  const hn=norm(m.home), an=norm(m.away);
+  const scoreHtml = m.homeScore!==null
+    ? `<div class="score">${m.homeScore}<span class="sep"> – </span>${m.awayScore}</div>`
+    : `<div class="score" style="font-size:13px;color:var(--ink-soft);">${fmtDate(m.utcDate)}</div>`;
+  return `<div class="mm">
+    <div class="meta"><span>${GN[m.group]||''}</span>${badge(m.status)}</div>
+    <div class="teams">
+      <div class="team">${flag(hn)} ${hn}</div>
+      ${scoreHtml}
+      <div class="team r">${flag(an)} ${an}</div>
+    </div>
+  </div>`;
 }
 
-function formatKickoff(utcDate){
-  try{
-    return new Date(utcDate).toLocaleString('en-US',{ weekday:'short', month:'short', day:'numeric', hour:'numeric', minute:'2-digit' });
-  } catch(e){ return utcDate; }
+function groupByGroup(matches){
+  const out={};
+  matches.forEach(m=>{
+    const g=m.group||'OTHER';
+    out[g]=out[g]||[];
+    out[g].push(m);
+  });
+  return out;
 }
 
-function renderMatch(m){
-  const score = (m.homeScore ?? null) !== null
-    ? `<div class="score">${m.homeScore} <span class="vs">–</span> ${m.awayScore}</div>`
-    : `<div class="score"><span class="vs">vs</span></div>`;
-  const venue = m.venue || formatKickoff(m.utcDate);
-  return `
-    <div class="ticket">
-      <div class="meta"><span>${GROUP_NAMES[m.group] || m.group || 'Match'} · ${formatKickoff(m.utcDate)}</span>${statusBadge(m.status)}</div>
-      <div class="teams">
-        <div class="team">${m.home}</div>
-        ${score}
-        <div class="team right">${m.away}</div>
-      </div>
-      <div class="venue">${venue}</div>
+function renderStandings(standings){
+  const keys = Object.keys(standings).sort();
+  if(!keys.length) return '<div class="empty">No finished matches yet — standings will appear here as results come in.</div>';
+  return keys.map(g=>{
+    const rows = standings[g];
+    const tbody = rows.map((r,i)=>{
+      const adv = i<2?'style="border-left:3px solid var(--turf);padding-left:7px;"':'';
+      const gd = r.GD>=0?`+${r.GD}`:r.GD;
+      const dn = norm(r.team);
+      return `<tr><td class="tn" ${adv}>${flag(dn)} ${dn}</td><td>${r.P}</td><td>${r.W}</td><td>${r.D}</td><td>${r.L}</td><td>${r.GF}</td><td>${r.GA}</td><td>${gd}</td><td><b>${r.Pts}</b></td></tr>`;
+    }).join('');
+    return `<div class="group-block">
+      <h3>${GN[g]||g}</h3>
+      <div class="sub">${VENUES[g]||''}</div>
+      <table class="std-table">
+        <thead><tr><th style="text-align:left;padding-left:10px;">Team</th><th>P</th><th>W</th><th>D</th><th>L</th><th>GF</th><th>GA</th><th>GD</th><th>Pts</th></tr></thead>
+        <tbody>${tbody}</tbody>
+      </table>
     </div>`;
+  }).join('');
 }
 
-function renderStandingsTable(rows){
-  return `
-    <table class="standings-mini">
-      <thead><tr><th style="text-align:left;">Team</th><th>P</th><th>W</th><th>D</th><th>L</th><th>GF</th><th>GA</th><th>GD</th><th>Pts</th></tr></thead>
-      <tbody>
-        ${rows.map(r=>`<tr><td class="team">${r.team}</td><td>${r.P}</td><td>${r.W}</td><td>${r.D}</td><td>${r.L}</td><td>${r.GF}</td><td>${r.GA}</td><td>${r.GD}</td><td>${r.Pts}</td></tr>`).join('')}
-      </tbody>
-    </table>`;
+function renderMatches(matches, title){
+  if(!matches.length) return `<div class="empty">No ${title.toLowerCase()} right now.</div>`;
+  const byGroup = groupByGroup(matches);
+  return Object.keys(byGroup).sort().map(g=>`
+    <div class="group-block">
+      <h3>${GN[g]||g}</h3>
+      <div class="match-mini">${byGroup[g].map(matchCard).join('')}</div>
+    </div>`).join('');
 }
 
-async function loadLive(){
-  const content = document.getElementById('live-content');
-  const updated = document.getElementById('live-updated');
-
+async function load(){
+  document.getElementById('status-txt').textContent = 'Refreshing…';
   try{
-    const resp = await fetch('/api/scores');
-    if(!resp.ok){
-      const err = await resp.json().catch(()=>({}));
-      throw new Error(err.error || ('HTTP ' + resp.status));
-    }
-    const data = await resp.json();
-    const matches = data.matches || [];
-    const standings = data.standings || {};
+    const r = await fetch('/api/scores');
+    if(!r.ok){ const e=await r.json().catch(()=>({})); throw new Error(e.error||'HTTP '+r.status); }
+    const data = await r.json();
+    const matches = data.matches||[];
+    const standings = data.standings||{};
 
-    if(!matches.length){
-      content.innerHTML = '<div class="empty-state">No match data returned yet. This usually means the World Cup 2026 competition data isn\\'t populated on football-data.org\\'s free tier yet, or the season hasn\\'t started in their system. Check back closer to kickoff.</div>';
-      updated.textContent = 'Last checked: ' + new Date().toLocaleTimeString();
-      return;
-    }
+    const finished = matches.filter(m=>m.status==='FINISHED');
+    const live = matches.filter(m=>['LIVE','IN_PLAY','PAUSED'].includes(m.status));
+    const upcoming = matches.filter(m=>m.status==='TIMED'||m.status==='SCHEDULED');
 
-    // Group matches by group
-    const byGroup = {};
-    matches.forEach(m=>{
-      const g = m.group || 'OTHER';
-      byGroup[g] = byGroup[g] || [];
-      byGroup[g].push(m);
-    });
+    // Results tab: live first, then finished most recent first
+    const resultMatches = [...live, ...finished.slice().reverse()];
+    document.getElementById('tab-results').innerHTML = renderMatches(resultMatches,'Results');
 
-    // Sort groups A-L then others
-    const groupKeys = Object.keys(byGroup).sort();
+    // Upcoming tab
+    document.getElementById('tab-upcoming').innerHTML = renderMatches(upcoming,'Upcoming fixtures');
 
-    let html = '';
-    groupKeys.forEach(g=>{
-      html += `<div class="live-group-block">`;
-      html += `<div class="live-group-title">${GROUP_NAMES[g] || g}</div>`;
-      if(standings[g] && standings[g].length){
-        html += renderStandingsTable(standings[g]);
-      }
-      html += `<div class="match-grid">${byGroup[g].map(renderMatch).join('')}</div>`;
-      html += `</div>`;
-    });
+    // Standings tab
+    document.getElementById('tab-standings').innerHTML = renderStandings(standings);
 
-    content.innerHTML = html;
-    updated.textContent = 'Last updated: ' + new Date(data.updated).toLocaleTimeString() + ' · Auto-refreshes every 60s';
+    const t = new Date(data.updated).toLocaleTimeString();
+    document.getElementById('status-txt').textContent =
+      `${live.length?live.length+' match'+(live.length>1?'es':'')+' live · ':''}${finished.length} results · ${upcoming.length} upcoming · Updated ${t}`;
+    document.getElementById('footer-date').textContent = 'Data: '+t;
+
   } catch(err){
-    content.innerHTML = `<div class="empty-state">Live scores aren't connected yet.<br><br>This page calls <code>/api/scores</code>, which needs a <code>FOOTBALL_DATA_TOKEN</code> environment variable set in your Vercel project (free key from football-data.org).<br><br><span style="color:var(--ink-soft);font-size:11px;">Error: ${err.message}</span></div>`;
-    updated.textContent = 'Not connected';
+    document.getElementById('status-txt').textContent = 'Error: '+err.message;
+    document.getElementById('tab-results').innerHTML =
+      `<div class="empty">Could not load scores.<br><small style="color:var(--ink-soft);">${err.message}</small></div>`;
   }
 }
 
-loadLive();
-document.getElementById('refresh-now').addEventListener('click', loadLive);
-setInterval(loadLive, 60000);
+// Tabs
+document.querySelectorAll('.stab').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.stab').forEach(b=>b.classList.toggle('active',b===btn));
+    document.querySelectorAll('.tab-panel').forEach(p=>p.classList.toggle('active',p.id==='tab-'+btn.dataset.tab));
+  });
+});
+document.getElementById('refresh-btn').addEventListener('click',load);
+load();
+setInterval(load,60000);
 </script>
-
 </body>
 </html>
